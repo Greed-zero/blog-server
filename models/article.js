@@ -4,6 +4,7 @@ const articleSchema = new mongoose.Schema({
       title: String,
       text: String,
       tags: Array,
+      description:String,
       updatetime: String
 })
 const articleModel = mongoose.model("article",articleSchema,"article")
