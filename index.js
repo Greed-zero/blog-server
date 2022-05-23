@@ -57,16 +57,14 @@ router.post("/article/add",async ctx=>{
 })
 router.post("/article/uploadimg",koaBody(),async ctx =>{
     var files = ctx.request.files
-    // console.log(files)
     const reader = fs.createReadStream(files['image']['filepath']);
-    // console.log(reader)
     let filePath = `assets/blog-image/${files['image']['newFilename']}.jpg`;
-    console.log('filePath:',filePath)
+    // console.log('filePath:',filePath)
     let remotefilePath = `http://localhost:8080/blog-image` + `/${files['image']['newFilename']}.jpg`;
-    console.log(remotefilePath)
+    // console.log(remotefilePath)
      // 创建可写流
      const upStream = fs.createWriteStream(filePath);
-     console.log(upStream)
+    //  console.log(upStream)
      // 可读流通过管道写入可写流
      reader.pipe(upStream);
     ctx.body = {
